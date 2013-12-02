@@ -23,6 +23,9 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 ********************************************************************************/
 
+if(version_compare(PHP_VERSION, '5.3.0', '<'))
+	wp_die(__('Sorry, but your PHP version is < 5.3', 'jtstm-domain'));
+
 include_once 'classes'.DIRECTORY_SEPARATOR.'JustAnotherTestimonials.php';
 
 register_activation_hook(__FILE__, array('JustAnotherTestimonials', 'activate'));
