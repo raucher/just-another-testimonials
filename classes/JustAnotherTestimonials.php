@@ -15,11 +15,14 @@ class JustAnotherTestimonials
 
 	public function init_settings()
 	{
-		register_setting('jtstm_testimonials_group', 'jststm_testimonials', function($input)
+		register_setting('jststm_testimonials_group', 'jststm_testimonials', function($input)
 		{
-			$input['message'] = sanitize_text_field($input['message']);
-			$input['author'] = sanitize_text_field($input['author']);
-			
+			foreach($input as $i => $data)
+			{
+				$input[$i]['message'] = sanitize_text_field($data['message']);
+				$input[$i]['author'] = sanitize_text_field($data['author']);
+			}
+
 			return $input;
 		});
 	}
