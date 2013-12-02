@@ -23,3 +23,9 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 ********************************************************************************/
 
+include_once 'classes'.DIRECTORY_SEPARATOR.'JustAnotherTestimonials.php';
+
+register_activation_hook(__FILE__, array('JustAnotherTestimonials', 'activate'));
+register_deactivation_hook(__FILE__, array('JustAnotherTestimonials', 'deactivate'));
+
+new JustAnotherTestimonials();
