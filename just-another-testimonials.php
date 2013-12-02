@@ -24,7 +24,7 @@
 ********************************************************************************/
 
 if(version_compare(PHP_VERSION, '5.3.0', '<'))
-	wp_die(__('Sorry, but your PHP version is < 5.3', 'jtstm-domain'));
+	wp_die(__('Sorry, but your PHP version is < 5.3', 'jststm-domain'));
 
 include_once 'classes'.DIRECTORY_SEPARATOR.'JustAnotherTestimonials.php';
 

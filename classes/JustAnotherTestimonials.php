@@ -15,7 +15,7 @@ class JustAnotherTestimonials
 
 	public function init_settings()
 	{
-		register_setting('jtstm_testimonials_group', 'jtstm_testimonials', function($input)
+		register_setting('jtstm_testimonials_group', 'jststm_testimonials', function($input)
 		{
 			$input['message'] = sanitize_text_field($input['message']);
 			$input['author'] = sanitize_text_field($input['author']);
@@ -27,13 +27,26 @@ class JustAnotherTestimonials
 	public function create_menu()
 	{
 		$obj = $this; // PHP 5.3 doesn't allow $this usage in closures
+
+		// Add main menu page
 		add_menu_page(
-			'Just Another Testimonials plugin', // Page title
-			'Testimonials', // Menu title
-			'manage_options', // Minimal capability to see it in menu
-			'jtstm_main_menu', // Unique menu slug
+			'Testimonials plugin', // page title
+			'Testimonials', // menu title
+			'manage_options', // minimal capability to see it
+			'jststm_main_menu', // unique menu slug
 			function() use ($obj){
-				$obj->render('main_menu'); // Render main menu page template
+				$obj->render('main_menu'); // render main menu page template
+			}
+		);
+		// Add help page
+		add_submenu_page(
+			'jststm_main_menu', // parent page slug
+			'Testimonials plugin help', // page title
+			'What is this?', // menu title
+			'manage_options', // capability
+			'jststm_help', // slug
+			function() use ($obj){
+				$obj->render('help_page');
 			}
 		);
 	}
