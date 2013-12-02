@@ -9,8 +9,14 @@ class JustAnotherTestimonials
 {
 	public function __construct()
 	{
-		
+
 	}
+
+	public function render($layout)
+	{
+		include_once plugin_dir_path(dirname(__FILE__)."/../layouts/{$layout}");
+	}
+
 	/**
 	 * Is called on plugin activation
 	 */
