@@ -72,7 +72,8 @@ class JustAnotherTestimonials
 			'jststm_main_menu', // unique menu slug
 			function() use ($obj){
 				$obj->render('main_menu'); // render main menu page template
-			}
+			},
+			plugins_url('images/theater.png', dirname(__FILE__)) // dashboard menu icon
 		);
 		// Add help page
 		add_submenu_page(
