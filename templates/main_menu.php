@@ -10,6 +10,60 @@
   */
 ?>
 
+<script type="text/javascript">
+	/**
+	 * Script to manage price list items
+	 */
+	jQuery(document).ready(function($)
+	{
+		var reName = /^(.+\[)(\d+)(\].+)$/ig; // RegExp to generate new name
+
+		$(document).on('click', '.add-item', function(e){
+			var lastItem = $('.testimonial-container:last');
+			var newItem = lastItem.clone(); // Clone last item block
+			newItem.find('input, textarea').each(function(){ // Select all inputs inside the wrapper
+				$(this).attr({
+					'name': $(this).attr('name').replace(reName, function(str, p1, p2, p3){
+						return p1+(p2+1)+p3; // Increase item array index
+					}),
+					'value': '' // Clear item value
+				});
+			});
+			newItem.insertAfter(lastItem); // Insert newly created item into the DOM
+
+			e.preventDefault();
+		});
+
+		$(document).on('click', '.remove-item', null, function(e){
+
+			e.preventDefault();
+		});
+		/*$('.add-item').click(function(){
+			var lastItem = $('.testimonial-container:last');
+			var newItem = lastItem.clone(); // Clone last item block
+			newItem.find('input, textarea').each(function(){ // Select all inputs inside the wrapper
+				$(this).attr({
+					'name': $(this).attr('name').replace(reName, function(str, p1, p2, p3){
+						return p1+(p2+1)+p3; // Increase item array index
+					}),
+					'value': '' // Clear item value
+				});
+			});
+			newItem.insertAfter(lastItem); // Insert newly created item into the DOM
+
+			return false;
+		});
+
+		$('.remove-item').click(function(){
+			if($('.testimonial-container').size()>1){ // If we have more than 1 item, delete last
+				$('.testimonial-container:last').remove();
+			}
+
+			return false;
+		});*/
+	});
+</script>
+
 <div class="wrap">
 	<h2>Manage Testimonials</h2>
 
@@ -25,14 +79,14 @@
 			</thead>
 			<tbody>
 				<?php foreach($testimonials as $i => $testimonial): ?>
-					<tr class="item-conatiner">
+					<tr class="testimonial-container">
 						<td style="width: 60%">
 							<textarea name="jststm_testimonials[<?php echo $i ?>][message]" style="width: 90%;" rows="7"><?php echo esc_textarea($testimonial['message']) ?></textarea>
 						</td>
 						<td style="width: 50%">
 							<input type="text" name="jststm_testimonials[<?php echo $i ?>][author]" value="<?php echo esc_attr($testimonial['author']) ?>" style="width: 90%">
-							<a href="#" style="display: block;">Delete Item</a>
-							<a href="#" style="display: block;">Add new</a>
+							<a class="remove-item" href="#" style="display: block;">Delete Item</a>
+							<a class="add-item" href="#" style="display: block;">Add new</a>
 						</td>
 					</tr>
 				<?php endforeach ?>
