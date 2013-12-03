@@ -25,7 +25,7 @@ class JustAnotherTestimonials
 		// Load text domain for the i18n
 		add_action('plugins_loaded', function()
 		{
-			load_plugin_textdomain('jststm-domain', false, dirname(plugin_basename(__FILE__)).'/translations/');
+			load_plugin_textdomain('jststm-domain', false, dirname(plugin_basename(__FILE__)).'/../translations/');
 		});
 
 		// Add shortcode and CSS
@@ -120,20 +120,15 @@ class JustAnotherTestimonials
 			update_option('jststm_testimonials', array(
 				array(
 					'author' => 'Bender Rodriguez',
-					'message' => 'Fortune, endurance, and malaria. Lord, old death!
-						Aw, evil furner. you won\'t fear the pacific ocean.',
+					'message' => 'Fortune, endurance, and malaria. Lord, old death! Aw, evil furner. you won\'t fear the pacific ocean.',
 				),
 				array(
 					'author' => 'Professor Hubert',
-					'message' => 'Pellentesque habitant morbi tristique senectus et netus et malesuada
-						fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget,
-						tempor sit amet, ante. Donec eu libero sit amet quam egestas semper.',
+					'message' => 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper.',
 				),
 				array(
 					'author' => 'Amy Wong',
-					'message' => 'Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi,
-						condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget
-						tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui.',
+					'message' => 'Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui.',
 				),
 			));
 		}
