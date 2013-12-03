@@ -18,49 +18,45 @@
 	{
 		var reName = /^(.+\[)(\d+)(\].+)$/ig; // RegExp to generate new name
 
-		$(document).on('click', '.add-item', function(e){
-			var lastItem = $('.testimonial-container:last');
-			var newItem = lastItem.clone(); // Clone last item block
-			newItem.find('input, textarea').each(function(){ // Select all inputs inside the wrapper
+		$(document).on('click', '.add-item', function(e)
+		{
+			e.preventDefault();
+
+			var $lastItem = $('.testimonial-container:last');
+			var $newItem = $lastItem.clone(); // Clone last item block
+
+			$newItem.find('input, textarea').each(function(){ // Select all inputs inside the wrapper
 				$(this).attr({
 					'name': $(this).attr('name').replace(reName, function(str, p1, p2, p3){
-						return p1+(p2+1)+p3; // Increase item array index
+						return p1+(++p2)+p3; // Increase item array index
 					}),
 					'value': '' // Clear item value
 				});
 			});
-			newItem.insertAfter(lastItem); // Insert newly created item into the DOM
 
+			$newItem.insertAfter($lastItem); // Insert newly created item into the DOM
+		});
+
+		$(document).on('click', '.remove-item', null, function(e)
+		{
 			e.preventDefault();
-		});
 
-		$(document).on('click', '.remove-item', null, function(e){
-
-			e.preventDefault();
-		});
-		/*$('.add-item').click(function(){
-			var lastItem = $('.testimonial-container:last');
-			var newItem = lastItem.clone(); // Clone last item block
-			newItem.find('input, textarea').each(function(){ // Select all inputs inside the wrapper
-				$(this).attr({
-					'name': $(this).attr('name').replace(reName, function(str, p1, p2, p3){
-						return p1+(p2+1)+p3; // Increase item array index
-					}),
-					'value': '' // Clear item value
-				});
-			});
-			newItem.insertAfter(lastItem); // Insert newly created item into the DOM
-
-			return false;
-		});
-
-		$('.remove-item').click(function(){
-			if($('.testimonial-container').size()>1){ // If we have more than 1 item, delete last
-				$('.testimonial-container:last').remove();
+			// If here is only one testimonial don't delete it
+			if($('.testimonial-container').size() <= 1)
+			{
+				return;
 			}
 
-			return false;
-		});*/
+			var $container = $(this).parents('.testimonial-container');
+
+			// If testimonial not empty show confirmation window and don't delete if answer is negative
+			if(($('textarea', $container).val() || $('input', $container).val()) && !confirm('Are you sure?'))
+			{
+				return;
+			}
+
+			$container.remove();
+		});
 	});
 </script>
 
