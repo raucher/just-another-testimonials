@@ -1,15 +1,15 @@
 <?php
 /**
  * Plugin Name: Just Another Testimonials
- * Plugin URI: http://URI_Of_Page_Describing_Plugin_and_Updates
+ * Plugin URI: https://github.com/raucher/just-another-testimonials
  * Description: A little and fast testimonial rotator
  * Version: 1.0
- * Author: Maksims Muzininkas
- * Author URI: http://URI_Of_The_Plugin_Author
+ * Author: Maksim Muzininkas
+ * Author URI: https://github.com/raucher
  * License: GPL2
  */
 /*******************************************************************************
-	Copyright 2013 Maksims Muzininkas (email : myplace4spam@gmail.com)
+	Copyright 2013 Maksim Muzininkas (email : myplace4spam@gmail.com)
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation; either version 2 of the License, or
