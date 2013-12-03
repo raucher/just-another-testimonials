@@ -15,7 +15,7 @@
 
 	<form method="post" action="options.php">
 		<?php settings_fields('jststm_testimonials_group') ?>
-		<?php $data = get_option('jststm_testimonials') ?>
+		<?php $testimonials = get_option('jststm_testimonials') ?>
 		<table class="widefat" style="width: 80%">
 			<thead>
 				<tr>
@@ -24,18 +24,18 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr class="item-conatiner">
-					<td style="width: 60%">
-						<textarea name="jststm_testimonials[0][message]" style="width: 90%" rows="7">
-							<?php echo esc_textarea($data[0]['message']) ?>
-						</textarea>
-					</td>
-					<td style="width: 50%">
-						<input type="text" name="jststm_testimonials[0][author]" value="<?php echo esc_attr($data[0]['author']) ?>" style="width: 90%">
-						<a href="#" style="display: block;">Delete Item</a>
-						<a href="#" style="display: block;">Add new</a>
-					</td>
-				</tr>
+				<?php foreach($testimonials as $i => $testimonial): ?>
+					<tr class="item-conatiner">
+						<td style="width: 60%">
+							<textarea name="jststm_testimonials[<?php echo $i ?>][message]" style="width: 90%;" rows="7"><?php echo esc_textarea($testimonial['message']) ?></textarea>
+						</td>
+						<td style="width: 50%">
+							<input type="text" name="jststm_testimonials[<?php echo $i ?>][author]" value="<?php echo esc_attr($testimonial['author']) ?>" style="width: 90%">
+							<a href="#" style="display: block;">Delete Item</a>
+							<a href="#" style="display: block;">Add new</a>
+						</td>
+					</tr>
+				<?php endforeach ?>
 			</tbody>
 			<tfoot>
 				<tr>

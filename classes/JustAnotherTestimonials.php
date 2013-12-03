@@ -72,7 +72,16 @@ class JustAnotherTestimonials
 	 */
 	public static function activate()
 	{
-		
+		if(get_option('jststm_testimonials') === false)
+		{
+			update_option('jststm_testimonials', array(
+				array(
+					'author' => 'Mortem germanus',
+					'message' => 'Fortune, endurance, and malaria. Lord, old death!
+						Aw, evil furner. you won\'t fear the pacific ocean.',
+				),
+			));
+		}
 	}
 	
 	/**
