@@ -11,7 +11,6 @@ class JustAnotherTestimonials
 	{
 		add_action('admin_init', array($this, 'init_settings'));
 		add_action('admin_menu', array($this, 'create_menu'));
-		add_action('wp_head', array($this, 'add_styles'));
 		$this->setup();
 	}
 
@@ -29,7 +28,8 @@ class JustAnotherTestimonials
 			$obj->render('front_end');
 			return ob_get_clean();
 		});
-		add_action( 'wp_enqueue_scripts', function()
+		// Add CSS
+		add_action( 'wp_print_styles', function()
 		{
 			wp_enqueue_style('jststm-style', plugins_url('css/jststm-style.css', dirname(__FILE__)));
 		});
