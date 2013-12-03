@@ -33,6 +33,11 @@ class JustAnotherTestimonials
 		{
 			wp_enqueue_style('jststm-style', plugins_url('css/jststm-style.css', dirname(__FILE__)));
 		});
+		// Add JS
+		add_action( 'wp_print_scripts', function()
+		{
+			wp_enqueue_script('jststm-js', plugins_url('js/jststm-rotator.js', dirname(__FILE__)));
+		});
 	}
 
 	/**

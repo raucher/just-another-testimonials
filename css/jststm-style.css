@@ -5,3 +5,11 @@
 blockquote.hidden{
     display: none;
 }
+
+.jststm-container{
+    position: relative;
+}
+
+.jststm-container blockquote{
+    position: absolute;
+}
