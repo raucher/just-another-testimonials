@@ -11,6 +11,18 @@ class JustAnotherTestimonials
 	{
 		add_action('admin_init', array($this, 'init_settings'));
 		add_action('admin_menu', array($this, 'create_menu'));
+		$this->add_shortcode();
+	}
+
+	protected function add_shortcode()
+	{
+		$obj = $this;
+		add_shortcode('jst-testimonials', function($atts) use ($obj)
+		{
+			ob_start();
+			$obj->render('front_end');
+			return ob_get_clean();
+		});
 	}
 
 	public function init_settings()
