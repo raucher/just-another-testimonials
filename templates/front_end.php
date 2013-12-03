@@ -12,7 +12,6 @@
 ?>
 
 <div class="jststm-container">
-	<h3>Hi, I'm a shortcode o_0 !</h3>
 	<?php $cnt=0 ?>
 	<?php foreach (get_option('jststm_testimonials') as $tstm):?>
 		<?php $class =  ($cnt++ > 0) ? 'hidden' : '' ?>

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Just Another Testimonials plugin\n"
-"POT-Creation-Date: 2013-12-03 22:03+0200\n"
-"PO-Revision-Date: 2013-12-03 22:23+0200\n"
+"POT-Creation-Date: 2013-12-03 22:54+0200\n"
+"PO-Revision-Date: 2013-12-03 22:54+0200\n"
 "Last-Translator: Maksims Muizininkas <makc.translations@gmail.com>\n"
 "Language-Team: Maksim Muizininkas <myplace4spam@gmail.com>\n"
 "Language: English\n"
@@ -31,4 +31,20 @@ msgstr ""
 
 #: ../templates/help_page.php:18
 msgid "Example shortcode:"
+msgstr ""
+
+#: ../templates/main_menu.php:15
+msgid "Are you sure?"
+msgstr ""
+
+#: ../templates/main_menu.php:74 ../templates/main_menu.php:96
+msgid "Message"
+msgstr ""
+
+#: ../templates/main_menu.php:75 ../templates/main_menu.php:97
+msgid "Author"
+msgstr ""
+
+#: ../templates/main_menu.php:102
+msgid "Save Testimonials"
 msgstr ""

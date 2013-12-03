@@ -11,6 +11,8 @@
 ?>
 
 <script type="text/javascript">
+
+	var confrmMsg = '<?php _e('Are you sure?', 'jststm-domain') ?>';
 	/**
 	 * Script to manage price list items
 	 */
@@ -50,7 +52,7 @@
 			var $container = $(this).parents('.testimonial-container');
 
 			// If testimonial not empty show confirmation window and don't delete if answer is negative
-			if(($('textarea', $container).val() || $('input', $container).val()) && !confirm('Are you sure?'))
+			if(($('textarea', $container).val() || $('input', $container).val()) && !confirm(confrmMsg))
 			{
 				return;
 			}
@@ -69,8 +71,8 @@
 		<table class="widefat" style="width: 80%">
 			<thead>
 				<tr>
-					<th>Message</th>
-					<th>Author</th>
+					<th><?php _e('Message', 'jststm-domain') ?></th>
+					<th><?php _e('Author', 'jststm-domain') ?></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -81,21 +83,23 @@
 						</td>
 						<td style="width: 50%">
 							<input type="text" name="jststm_testimonials[<?php echo $i ?>][author]" value="<?php echo esc_attr($testimonial['author']) ?>" style="width: 90%">
-							<a class="remove-item" href="#" style="display: block;">Delete Item</a>
-							<a class="add-item" href="#" style="display: block;">Add new</a>
+							<div style="margin-top: 14px">
+								<a class="add-item" href="#" style="padding-right: 20px;">Add new</a>
+								<a class="remove-item" href="#">Delete Item</a>
+							</div>
 						</td>
 					</tr>
 				<?php endforeach ?>
 			</tbody>
 			<tfoot>
 				<tr>
-					<th>Message</th>
-					<th>Author</th>
+					<th><?php _e('Message', 'jststm-domain') ?></th>
+					<th><?php _e('Author', 'jststm-domain') ?></th>
 				</tr>
 			</tfoot>
 		</table>
 		<p class="submit">
-			<input class="button-primary" type="submit" value="Save Testimonials">
+			<input class="button-primary" type="submit" value="<?php _e('Save Testimonials', 'jststm-domain') ?>">
 		</p>
 	</form>
 </div>
