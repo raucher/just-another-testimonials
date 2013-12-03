@@ -11,20 +11,33 @@ class JustAnotherTestimonials
 	{
 		add_action('admin_init', array($this, 'init_settings'));
 		add_action('admin_menu', array($this, 'create_menu'));
-		$this->add_shortcode();
+		add_action('wp_head', array($this, 'add_styles'));
+		$this->setup();
 	}
 
-	protected function add_shortcode()
+	/**
+	 * Does additional setup
+	 */
+	protected function setup()
 	{
 		$obj = $this;
+
+		// Add shortcode and CSS
 		add_shortcode('jst-testimonials', function($atts) use ($obj)
 		{
 			ob_start();
 			$obj->render('front_end');
 			return ob_get_clean();
 		});
+		add_action( 'wp_enqueue_scripts', function()
+		{
+			wp_enqueue_style('jststm-style', plugins_url('css/jststm-style.css', dirname(__FILE__)));
+		});
 	}
 
+	/**
+	 * Registers options group for admin menu
+	 */
 	public function init_settings()
 	{
 		register_setting('jststm_testimonials_group', 'jststm_testimonials', function($input)
@@ -39,6 +52,9 @@ class JustAnotherTestimonials
 		});
 	}
 
+	/**
+	 * Creates dashboard menu items and its pages
+	 */
 	public function create_menu()
 	{
 		$obj = $this; // PHP 5.3 doesn't allow $this usage in closures
@@ -84,6 +100,7 @@ class JustAnotherTestimonials
 	 */
 	public static function activate()
 	{
+		// Create some testimonials for demonstration
 		if(get_option('jststm_testimonials') === false)
 		{
 			update_option('jststm_testimonials', array(
