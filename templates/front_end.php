@@ -1,6 +1,8 @@
 <?php
  /**
   * Front-end template
+  *	Layout assumes you are using TwitterBootstrap
+  *  if not please add styling for blockquote in your CSS
   *
   * Plugin option name: jststm_testimonials
   *
@@ -11,8 +13,10 @@
 
 <div class="jststm-container">
 	<h3>Hi, I'm a shortcode o_0 !</h3>
+	<?php $cnt=0 ?>
 	<?php foreach (get_option('jststm_testimonials') as $tstm):?>
-		<blockquote>
+		<?php $class =  ($cnt++ > 0) ? 'hidden' : '' ?>
+		<blockquote class="<?php echo $class ?>">
 			<p class="message"><?php echo $tstm['message'] ?></p>
 			<p class="author"><small><?php echo $tstm['author'] ?></small></p>
 		</blockquote>
