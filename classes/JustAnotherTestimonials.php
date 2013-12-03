@@ -11,6 +11,7 @@ class JustAnotherTestimonials
 	{
 		add_action('admin_init', array($this, 'init_settings'));
 		add_action('admin_menu', array($this, 'create_menu'));
+
 		$this->setup();
 	}
 
@@ -20,6 +21,12 @@ class JustAnotherTestimonials
 	protected function setup()
 	{
 		$obj = $this;
+
+		// Load text domain for the i18n
+		add_action('plugins_loaded', function()
+		{
+			load_plugin_textdomain('jststm-domain', false, dirname(plugin_basename(__FILE__)).'/translations/');
+		});
 
 		// Add shortcode and CSS
 		add_shortcode('jst-testimonials', function($atts) use ($obj)
