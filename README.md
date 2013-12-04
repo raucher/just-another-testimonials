@@ -1,9 +1,8 @@
 # WP testimonials rotator plugin
-----------------------------------------
 
-This plugin allows you to add testimonials and neatly show them to your visitors
+This plugin allows you to add testimonials and neatly show them to your visitors.
 
-### Plugin doesn't contain styles for blockquote thus feel free to aply your own
+#### Plugin doesn't contain styles for blockquote thus feel free to aply your own.
 
 ## HTML output layout:
 
